@@ -16,11 +16,16 @@ await client.query('CREATE TABLE test (id SERIAL PRIMARY KEY, value TEXT)');
 const start = process.hrtime.bigint();
 
 for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
-	const { rows } = await client.query(
-		'INSERT INTO test (value) VALUES ($1) RETURNING id',
-		['hello']
-	);
-	const result = await client.query('SELECT * FROM test WHERE id = $1', [rows[0].id]);
+	const { rows } = await client.query({
+		name: 'insert-test',
+		text: 'INSERT INTO test (value) VALUES ($1) RETURNING id',
+		values: ['hello']
+	});
+	const result = await client.query({
+		name: 'select-test',
+		text: 'SELECT * FROM test WHERE id = $1',
+		values: [rows[0].id]
+	});
 	if (result.rows[0].value !== 'hello') {
 		throw new Error(`Expected 'hello', got '${result.rows[0].value}'`);
 	}
