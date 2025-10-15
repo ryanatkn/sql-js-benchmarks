@@ -36,7 +36,7 @@ await client.close();
 console.log(
 	JSON.stringify({
 		phase: 'round-trip',
-		driver: 'pglite-drizzle',
+		driver: 'pglite-memory-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
 		time_ms: Number(end - start) / 1_000_000

@@ -1,7 +1,7 @@
 # PostgreSQL & SQLite Driver Benchmarks
 
-**Generated:** 2025-10-15T11:15:08.944Z
-**Node:** v24.9.0 | **PostgreSQL:** 17.5
+- Node: v24.9.0
+- PostgreSQL: 17.5
 
 ---
 
@@ -9,19 +9,19 @@
 
 30 iterations, fresh Node process each time
 
-| # | Driver | Type | Median | Min | Max | P95 | ORM Overhead |
+| # | Driver | Type | Median | Min | P90 | CV | ORM Overhead |
 |---|---|---|---|---|---|---|---|
-| 1 | sqlite | raw | 5.58ms | 5.48ms | 6.33ms | 6.27ms | - |
-| 2 | sqlite-drizzle | orm | 259.56ms | 254.82ms | 278.36ms | 269.73ms | +4554% |
-| 3 | pg | raw | 16.87ms | 15.97ms | 21.88ms | 21.60ms | - |
-| 4 | pg-drizzle | orm | 289.82ms | 281.37ms | 302.88ms | 302.73ms | +1618% |
-| 5 | postgres | raw | 13.62ms | 12.83ms | 17.39ms | 17.02ms | - |
-| 6 | postgres-drizzle | orm | 276.95ms | 244.61ms | 305.78ms | 296.54ms | +1933% |
-| 7 | pglite | raw | 12.15ms | 11.76ms | 12.91ms | 12.90ms | - |
-| 8 | pglite-drizzle | orm | 277.72ms | 272.24ms | 307.89ms | 304.45ms | +2186% |
+| 1 | sqlite | raw | 5.56ms | 5.48ms | 5.86ms | 2.4% | - |
+| 2 | sqlite-drizzle | orm | 258.89ms | 255.57ms | 261.85ms | 0.7% | +4555% |
+| 3 | pg | raw | 15.97ms | 15.79ms | 16.68ms | 4.7% | - |
+| 4 | pg-drizzle | orm | 280.84ms | 277.85ms | 284.57ms | 0.8% | +1659% |
+| 5 | postgres | raw | 12.86ms | 12.72ms | 13.37ms | 6.8% | - |
+| 6 | postgres-drizzle | orm | 274.28ms | 271.77ms | 279.55ms | 0.9% | +2033% |
+| 7 | pglite | raw | 11.95ms | 11.69ms | 12.21ms | 1.6% | - |
+| 8 | pglite-drizzle | orm | 274.45ms | 270.18ms | 278.46ms | 0.9% | +2196% |
 
 **Key Findings:**
-- Drizzle adds ~273ms import overhead to pg driver
+- Drizzle adds ~265ms import overhead to pg driver
 - postgres is 19% faster than pg for imports
 ---
 
@@ -29,20 +29,20 @@
 
 30 iterations, full operation (cold start: connect + query + close)
 
-| # | Driver | Type | Median | Min | Max | P95 | ORM Overhead |
+| # | Driver | Type | Median | Min | P90 | CV | ORM Overhead |
 |---|---|---|---|---|---|---|---|
-| 1 | sqlite-memory | raw | 1.65ms | 1.58ms | 1.84ms | 1.77ms | - |
-| 2 | sqlite-memory-drizzle | orm | 2.81ms | 2.75ms | 2.94ms | 2.88ms | +70% |
-| 3 | sqlite-fs | raw | 1.78ms | 1.66ms | 2.07ms | 1.91ms | - |
-| 4 | sqlite-fs-drizzle | orm | 2.67ms | 2.36ms | 2.78ms | 2.73ms | +50% |
-| 5 | pg | raw | 10.84ms | 10.33ms | 11.49ms | 11.43ms | - |
-| 6 | pg-drizzle | orm | 14.28ms | 13.55ms | 15.46ms | 15.04ms | +32% |
-| 7 | postgres | raw | 15.97ms | 15.30ms | 18.74ms | 17.00ms | - |
-| 8 | postgres-drizzle | orm | 17.71ms | 15.34ms | 19.89ms | 19.55ms | +11% |
-| 9 | pglite-memory | raw | 714.44ms | 652.79ms | 729.77ms | 729.70ms | - |
-| 10 | pglite-memory-drizzle | orm | 716.59ms | 644.76ms | 761.92ms | 759.37ms | ~0% |
-| 11 | pglite-fs | raw | 908.85ms | 822.59ms | 982.85ms | 981.13ms | - |
-| 12 | pglite-fs-drizzle | orm | 920.49ms | 822.88ms | 971.08ms | 969.59ms | +1% |
+| 1 | sqlite-memory | raw | 1.60ms | 1.56ms | 1.68ms | 4.0% | - |
+| 2 | sqlite-memory-drizzle | orm | 2.80ms | 2.75ms | 2.86ms | 2.1% | +75% |
+| 3 | sqlite-fs | raw | 1.67ms | 1.64ms | 1.72ms | 1.5% | - |
+| 4 | sqlite-fs-drizzle | orm | 2.66ms | 2.60ms | 2.74ms | 1.2% | +59% |
+| 5 | pg | raw | 10.54ms | 10.11ms | 10.71ms | 1.7% | - |
+| 6 | pg-drizzle | orm | 14.15ms | 12.66ms | 15.04ms | 5.8% | +34% |
+| 7 | postgres | raw | 15.80ms | 14.27ms | 16.73ms | 3.5% | - |
+| 8 | postgres-drizzle | orm | 17.00ms | 14.93ms | 19.10ms | 7.5% | +8% |
+| 9 | pglite-memory | raw | 710.68ms | 649.71ms | 741.72ms | 3.6% | - |
+| 10 | pglite-memory-drizzle | orm | 702.95ms | 639.71ms | 718.39ms | 3.9% | -1% |
+| 11 | pglite-fs | raw | 914.61ms | 828.64ms | 930.01ms | 3.1% | - |
+| 12 | pglite-fs-drizzle | orm | 920.05ms | 835.38ms | 938.61ms | 4.1% | +1% |
 
 **Key Findings:**
 - Drizzle adds ~21% overhead for full operation
@@ -52,20 +52,20 @@
 
 30 iterations, 100 cycles of INSERT RETURNING + SELECT per iteration
 
-| # | Driver | Type | Median | Min | Max | P95 | ORM Overhead |
+| # | Driver | Type | Median | Min | P90 | CV | ORM Overhead |
 |---|---|---|---|---|---|---|---|
-| 1 | sqlite-memory | raw | 0.30ms | 0.30ms | 0.33ms | 0.31ms | - |
-| 2 | sqlite-memory-drizzle | orm | 15.86ms | 13.89ms | 19.09ms | 18.98ms | +5173% |
-| 3 | sqlite-fs | raw | 722.36ms | 649.31ms | 1074.50ms | 1029.04ms | - |
-| 4 | sqlite-fs-drizzle | orm | 749.73ms | 700.66ms | 1318.10ms | 1158.24ms | +4% |
-| 5 | pg | raw | 162.45ms | 155.98ms | 415.50ms | 336.33ms | - |
-| 6 | pg-drizzle | orm | 177.67ms | 171.00ms | 437.13ms | 294.78ms | +9% |
-| 7 | postgres | raw | 159.82ms | 148.06ms | 398.16ms | 270.27ms | - |
-| 8 | postgres-drizzle | orm | 188.86ms | 182.58ms | 422.52ms | 338.93ms | +18% |
-| 9 | pglite | raw | 71.54ms | 62.89ms | 74.63ms | 73.65ms | - |
-| 10 | pglite-drizzle | orm | 95.68ms | 84.28ms | 109.44ms | 105.92ms | +34% |
-| 11 | pglite-fs | raw | 73.53ms | 68.94ms | 81.36ms | 79.67ms | - |
-| 12 | pglite-fs-drizzle | orm | 87.71ms | 79.47ms | 97.90ms | 95.74ms | +19% |
+| 1 | sqlite-memory | raw | 0.30ms | 0.29ms | 0.30ms | 1.2% | - |
+| 2 | sqlite-memory-drizzle | orm | 15.92ms | 13.95ms | 17.53ms | 6.6% | +5272% |
+| 3 | sqlite-fs | raw | 715.87ms | 638.83ms | 1020.73ms | 15.5% | - |
+| 4 | sqlite-fs-drizzle | orm | 718.23ms | 672.96ms | 1149.22ms | 21.6% | ~0% |
+| 5 | pg | raw | 159.74ms | 153.16ms | 180.83ms | 27.3% | - |
+| 6 | pg-drizzle | orm | 175.96ms | 165.61ms | 243.21ms | 24.5% | +10% |
+| 7 | postgres | raw | 157.67ms | 151.45ms | 233.05ms | 24.7% | - |
+| 8 | postgres-drizzle | orm | 190.72ms | 183.38ms | 242.53ms | 19.2% | +21% |
+| 9 | pglite-memory | raw | 71.45ms | 62.62ms | 72.87ms | 5.9% | - |
+| 10 | pglite-memory-drizzle | orm | 95.86ms | 81.06ms | 98.24ms | 7.1% | +34% |
+| 11 | pglite-fs | raw | 79.22ms | 69.72ms | 84.46ms | 4.6% | - |
+| 12 | pglite-fs-drizzle | orm | 89.83ms | 78.99ms | 93.49ms | 5.8% | +13% |
 
 ---
 

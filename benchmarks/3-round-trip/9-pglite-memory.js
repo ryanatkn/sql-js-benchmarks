@@ -23,7 +23,7 @@ await db.close();
 console.log(
 	JSON.stringify({
 		phase: 'round-trip',
-		driver: 'pglite',
+		driver: 'pglite-memory',
 		variant: 'raw',
 		time_ns: Number(end - start),
 		time_ms: Number(end - start) / 1_000_000
