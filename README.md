@@ -6,9 +6,10 @@ See [results/output.md](results/output.md).
 
 ## What this measures
 
-- import overhead
-- cold start connection (connect + SELECT 1 query)
-- round trip (INSERT + SELECT) - 100 cycles per iteration
+- benchmark 1 - import overhead
+- benchmark 2 - cold start connection (connect + SELECT 1 query)
+- benchmark 3 - round trip (INSERT + SELECT) - 100 times per iteration
+- Drizzle overhead for each of the benchmarks
 
 ## Benchmarked drivers
 
@@ -39,9 +40,10 @@ npm install
 npm start
 ```
 
-Results written to:
-- `results/output.json`
-- `results/output.md`
+Generates output:
+
+- [results/output.md](./results/output.md)
+- [results/output.json](./results/output.json)
 
 Environment variables:
 
