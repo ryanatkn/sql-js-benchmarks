@@ -57,18 +57,12 @@ PGPASSWORD=""
 
 [results/output.md](results/output.md)
 
-Each benchmark runs 30 iterations. Results include:
-- **median**
-- **min/max**
-- **p95**
-- **ORM overhead** - percentage overhead from Drizzle (for ORM variants)
-
 ## Project structure
 
 ```
 pg_js_benchmarks/
 ├── benchmarks/
-│   ├── 1-import/           (8 variants)
+│   ├── 1-import/           (8 variants - no in-memory variants)
 │   ├── 2-minimal-query/    (12 variants)
 │   └── 3-round-trip/       (12 variants)
 ├── lib/
