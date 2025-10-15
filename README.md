@@ -73,7 +73,3 @@ pg_js_benchmarks/
 ├── run.js
 └── results/
 ```
-
-## License
-
-MIT

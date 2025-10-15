@@ -2,7 +2,7 @@
   "name": "sql-js-benchmarks",
   "version": "1.0.0",
   "description": "PostgreSQL and sqlite benchmarks for Node",
-  "license": "MIT",
+  "license": "Unlicense",
   "repository": "https://github.com/ryanatkn/js_sql_benchmarks",
   "author": {
     "name": "Ryan Atkinson",
