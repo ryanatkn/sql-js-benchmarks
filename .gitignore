@@ -1,0 +1,35 @@
+# Deps
+node_modules
+
+# Output
+/.svelte-kit
+/build
+/dist
+/dist_*
+/.gro
+/.zzz
+
+# Env
+.env*
+!.env.example
+!.env.*.example
+!.env.test
+!.env.*.test
+
+# Secrets
+*.pem
+id_rsa
+
+# Ignore
+*.ignore
+*.ignore.*
+ignore
+
+# Workflow
+/worktree
+
+# Os
+.DS_Store
+Thumbs.db
+
+tmp

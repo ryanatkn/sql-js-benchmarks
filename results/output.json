@@ -1,0 +1,560 @@
+{
+  "environment": {
+    "timestamp": "2025-10-15T11:15:08.944Z",
+    "node": "v24.9.0",
+    "postgresql": "17.5"
+  },
+  "iterations": 30,
+  "results": {
+    "1-import": [
+      {
+        "phase": "import",
+        "driver": "sqlite",
+        "variant": "raw",
+        "time_ns": 5776290,
+        "time_ms": 5.77629,
+        "fileNumber": 1,
+        "stats": {
+          "median": 5.577396,
+          "avg": 5.657489566666667,
+          "min": 5.479543,
+          "max": 6.334939,
+          "p95": 6.268385,
+          "p99": 6.334939
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "sqlite-drizzle",
+        "variant": "orm",
+        "time_ns": 260186880,
+        "time_ms": 260.18688,
+        "fileNumber": 2,
+        "stats": {
+          "median": 259.560461,
+          "avg": 260.93163043333334,
+          "min": 254.822613,
+          "max": 278.35689,
+          "p95": 269.730466,
+          "p99": 278.35689
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "pg",
+        "variant": "raw",
+        "time_ns": 16400768,
+        "time_ms": 16.400768,
+        "fileNumber": 3,
+        "stats": {
+          "median": 16.873870500000002,
+          "avg": 17.450595833333338,
+          "min": 15.966621,
+          "max": 21.878937,
+          "p95": 21.59821,
+          "p99": 21.878937
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "pg-drizzle",
+        "variant": "orm",
+        "time_ns": 286857430,
+        "time_ms": 286.85743,
+        "fileNumber": 4,
+        "stats": {
+          "median": 289.819805,
+          "avg": 290.3324646666667,
+          "min": 281.369009,
+          "max": 302.87791,
+          "p95": 302.728756,
+          "p99": 302.87791
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "postgres",
+        "variant": "raw",
+        "time_ns": 14829525,
+        "time_ms": 14.829525,
+        "fileNumber": 5,
+        "stats": {
+          "median": 13.620459,
+          "avg": 14.023931299999997,
+          "min": 12.831332,
+          "max": 17.385787,
+          "p95": 17.024237,
+          "p99": 17.385787
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "postgres-drizzle",
+        "variant": "orm",
+        "time_ns": 287111489,
+        "time_ms": 287.111489,
+        "fileNumber": 6,
+        "stats": {
+          "median": 276.94575399999997,
+          "avg": 273.7152801333333,
+          "min": 244.612857,
+          "max": 305.777801,
+          "p95": 296.536586,
+          "p99": 305.777801
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "pglite",
+        "variant": "raw",
+        "time_ns": 12049593,
+        "time_ms": 12.049593,
+        "fileNumber": 7,
+        "stats": {
+          "median": 12.1509835,
+          "avg": 12.262533133333333,
+          "min": 11.760971,
+          "max": 12.908707,
+          "p95": 12.900321,
+          "p99": 12.908707
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "import",
+        "driver": "pglite-drizzle",
+        "variant": "orm",
+        "time_ns": 307887666,
+        "time_ms": 307.887666,
+        "fileNumber": 8,
+        "stats": {
+          "median": 277.719191,
+          "avg": 281.0863819,
+          "min": 272.240022,
+          "max": 307.887666,
+          "p95": 304.44594,
+          "p99": 307.887666
+        },
+        "iterations": 30
+      }
+    ],
+    "2-minimal-query": [
+      {
+        "phase": "minimal-query",
+        "driver": "sqlite-memory",
+        "variant": "raw",
+        "time_ns": 1773441,
+        "time_ms": 1.773441,
+        "fileNumber": 1,
+        "stats": {
+          "median": 1.6543925000000002,
+          "avg": 1.6566954666666664,
+          "min": 1.576782,
+          "max": 1.838984,
+          "p95": 1.773441,
+          "p99": 1.838984
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pglite-memory-drizzle",
+        "variant": "orm",
+        "time_ns": 721624920,
+        "time_ms": 721.62492,
+        "fileNumber": 10,
+        "stats": {
+          "median": 716.5855240000001,
+          "avg": 715.0717957666667,
+          "min": 644.758203,
+          "max": 761.920999,
+          "p95": 759.366682,
+          "p99": 761.920999
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pglite-fs",
+        "variant": "raw",
+        "time_ns": 837134826,
+        "time_ms": 837.134826,
+        "fileNumber": 11,
+        "stats": {
+          "median": 908.846407,
+          "avg": 902.3884192,
+          "min": 822.593899,
+          "max": 982.854028,
+          "p95": 981.128418,
+          "p99": 982.854028
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pglite-fs-drizzle",
+        "variant": "orm",
+        "time_ns": 959781083,
+        "time_ms": 959.781083,
+        "fileNumber": 12,
+        "stats": {
+          "median": 920.486313,
+          "avg": 914.1636199333334,
+          "min": 822.875281,
+          "max": 971.08103,
+          "p95": 969.591245,
+          "p99": 971.08103
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "sqlite-memory-drizzle",
+        "variant": "orm",
+        "time_ns": 2787054,
+        "time_ms": 2.787054,
+        "fileNumber": 2,
+        "stats": {
+          "median": 2.80611,
+          "avg": 2.8091250333333333,
+          "min": 2.745076,
+          "max": 2.940503,
+          "p95": 2.883174,
+          "p99": 2.940503
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "sqlite-fs",
+        "variant": "raw",
+        "time_ns": 1886613,
+        "time_ms": 1.886613,
+        "fileNumber": 3,
+        "stats": {
+          "median": 1.7766264999999999,
+          "avg": 1.7936883333333333,
+          "min": 1.662472,
+          "max": 2.06565,
+          "p95": 1.909756,
+          "p99": 2.06565
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "sqlite-fs-drizzle",
+        "variant": "orm",
+        "time_ns": 2784299,
+        "time_ms": 2.784299,
+        "fileNumber": 4,
+        "stats": {
+          "median": 2.6702895,
+          "avg": 2.636323333333333,
+          "min": 2.361354,
+          "max": 2.784299,
+          "p95": 2.72604,
+          "p99": 2.784299
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pg",
+        "variant": "raw",
+        "time_ns": 11169377,
+        "time_ms": 11.169377,
+        "fileNumber": 5,
+        "stats": {
+          "median": 10.842212,
+          "avg": 10.867423000000002,
+          "min": 10.32968,
+          "max": 11.491031,
+          "p95": 11.428553,
+          "p99": 11.491031
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pg-drizzle",
+        "variant": "orm",
+        "time_ns": 14228912,
+        "time_ms": 14.228912,
+        "fileNumber": 6,
+        "stats": {
+          "median": 14.2758655,
+          "avg": 14.271793566666666,
+          "min": 13.553293,
+          "max": 15.462368,
+          "p95": 15.044975,
+          "p99": 15.462368
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "postgres",
+        "variant": "raw",
+        "time_ns": 15494799,
+        "time_ms": 15.494799,
+        "fileNumber": 7,
+        "stats": {
+          "median": 15.973343,
+          "avg": 16.084890700000003,
+          "min": 15.295955,
+          "max": 18.740794,
+          "p95": 16.999095,
+          "p99": 18.740794
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "postgres-drizzle",
+        "variant": "orm",
+        "time_ns": 16104344,
+        "time_ms": 16.104344,
+        "fileNumber": 8,
+        "stats": {
+          "median": 17.711041,
+          "avg": 17.52559026666667,
+          "min": 15.339577,
+          "max": 19.885716,
+          "p95": 19.552549,
+          "p99": 19.885716
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "minimal-query",
+        "driver": "pglite-memory",
+        "variant": "raw",
+        "time_ns": 729770539,
+        "time_ms": 729.770539,
+        "fileNumber": 9,
+        "stats": {
+          "median": 714.4363304999999,
+          "avg": 707.1940115666665,
+          "min": 652.785373,
+          "max": 729.770539,
+          "p95": 729.698505,
+          "p99": 729.770539
+        },
+        "iterations": 30
+      }
+    ],
+    "3-round-trip": [
+      {
+        "phase": "round-trip",
+        "driver": "sqlite-memory",
+        "variant": "raw",
+        "time_ns": 300825,
+        "time_ms": 0.300825,
+        "fileNumber": 1,
+        "stats": {
+          "median": 0.30078,
+          "avg": 0.3025168999999999,
+          "min": 0.296888,
+          "max": 0.329379,
+          "p95": 0.311916,
+          "p99": 0.329379
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pglite-drizzle",
+        "variant": "orm",
+        "time_ns": 97395220,
+        "time_ms": 97.39522,
+        "fileNumber": 10,
+        "stats": {
+          "median": 95.682786,
+          "avg": 93.56376813333333,
+          "min": 84.284128,
+          "max": 109.43651,
+          "p95": 105.916139,
+          "p99": 109.43651
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pglite-fs",
+        "variant": "raw",
+        "time_ns": 70340770,
+        "time_ms": 70.34077,
+        "fileNumber": 11,
+        "stats": {
+          "median": 73.527132,
+          "avg": 74.25335409999998,
+          "min": 68.940299,
+          "max": 81.355563,
+          "p95": 79.667653,
+          "p99": 81.355563
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pglite-fs-drizzle",
+        "variant": "orm",
+        "time_ns": 90973621,
+        "time_ms": 90.973621,
+        "fileNumber": 12,
+        "stats": {
+          "median": 87.7069395,
+          "avg": 86.7290523,
+          "min": 79.468004,
+          "max": 97.896608,
+          "p95": 95.742804,
+          "p99": 97.896608
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "sqlite-memory-drizzle",
+        "variant": "orm",
+        "time_ns": 17373763,
+        "time_ms": 17.373763,
+        "fileNumber": 2,
+        "stats": {
+          "median": 15.8596445,
+          "avg": 16.155415633333334,
+          "min": 13.887808,
+          "max": 19.086108,
+          "p95": 18.984879,
+          "p99": 19.086108
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "sqlite-fs",
+        "variant": "raw",
+        "time_ns": 649305349,
+        "time_ms": 649.305349,
+        "fileNumber": 3,
+        "stats": {
+          "median": 722.3613265,
+          "avg": 772.2484746666667,
+          "min": 649.305349,
+          "max": 1074.504147,
+          "p95": 1029.040605,
+          "p99": 1074.504147
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "sqlite-fs-drizzle",
+        "variant": "orm",
+        "time_ns": 748168878,
+        "time_ms": 748.168878,
+        "fileNumber": 4,
+        "stats": {
+          "median": 749.7311385,
+          "avg": 828.0916065666667,
+          "min": 700.659211,
+          "max": 1318.097532,
+          "p95": 1158.243271,
+          "p99": 1318.097532
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pg",
+        "variant": "raw",
+        "time_ns": 415495952,
+        "time_ms": 415.495952,
+        "fileNumber": 5,
+        "stats": {
+          "median": 162.446179,
+          "avg": 182.19153223333333,
+          "min": 155.979602,
+          "max": 415.495952,
+          "p95": 336.334615,
+          "p99": 415.495952
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pg-drizzle",
+        "variant": "orm",
+        "time_ns": 294778043,
+        "time_ms": 294.778043,
+        "fileNumber": 6,
+        "stats": {
+          "median": 177.6708075,
+          "avg": 191.2972732,
+          "min": 170.995111,
+          "max": 437.126761,
+          "p95": 294.778043,
+          "p99": 437.126761
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "postgres",
+        "variant": "raw",
+        "time_ns": 155474149,
+        "time_ms": 155.474149,
+        "fileNumber": 7,
+        "stats": {
+          "median": 159.8239365,
+          "avg": 177.23481653333337,
+          "min": 148.055109,
+          "max": 398.160498,
+          "p95": 270.267296,
+          "p99": 398.160498
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "postgres-drizzle",
+        "variant": "orm",
+        "time_ns": 189035443,
+        "time_ms": 189.035443,
+        "fileNumber": 8,
+        "stats": {
+          "median": 188.864826,
+          "avg": 205.6849598666667,
+          "min": 182.577704,
+          "max": 422.515578,
+          "p95": 338.928938,
+          "p99": 422.515578
+        },
+        "iterations": 30
+      },
+      {
+        "phase": "round-trip",
+        "driver": "pglite",
+        "variant": "raw",
+        "time_ns": 74632317,
+        "time_ms": 74.632317,
+        "fileNumber": 9,
+        "stats": {
+          "median": 71.53886399999999,
+          "avg": 69.58161366666668,
+          "min": 62.891903,
+          "max": 74.632317,
+          "p95": 73.654581,
+          "p99": 74.632317
+        },
+        "iterations": 30
+      }
+    ]
+  }
+}
