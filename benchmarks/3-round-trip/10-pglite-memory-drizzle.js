@@ -22,10 +22,13 @@ for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 		.values({ value: 'hello' })
 		.returning({ id: testTable.id });
 
-	await db
+	const [result] = await db
 		.select()
 		.from(testTable)
 		.where(eq(testTable.id, inserted.id));
+	if (result.value !== 'hello') {
+		throw new Error(`Expected 'hello', got '${result.value}'`);
+	}
 }
 
 const end = process.hrtime.bigint();

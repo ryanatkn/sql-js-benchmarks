@@ -15,7 +15,10 @@ const start = process.hrtime.bigint();
 
 for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 	const info = insertStmt.run('hello');
-	selectStmt.get(info.lastInsertRowid);
+	const result = selectStmt.get(info.lastInsertRowid);
+	if (result.value !== 'hello') {
+		throw new Error(`Expected 'hello', got '${result.value}'`);
+	}
 }
 
 const end = process.hrtime.bigint();

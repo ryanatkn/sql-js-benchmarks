@@ -12,7 +12,10 @@ for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 		'INSERT INTO test (value) VALUES ($1) RETURNING id',
 		['hello']
 	);
-	await db.query('SELECT * FROM test WHERE id = $1', [rows[0].id]);
+	const result = await db.query('SELECT * FROM test WHERE id = $1', [rows[0].id]);
+	if (result.rows[0].value !== 'hello') {
+		throw new Error(`Expected 'hello', got '${result.rows[0].value}'`);
+	}
 }
 
 const end = process.hrtime.bigint();

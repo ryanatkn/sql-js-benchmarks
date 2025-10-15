@@ -15,7 +15,10 @@ const start = process.hrtime.bigint();
 
 for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 	const [{ id }] = await sql`INSERT INTO test (value) VALUES (${'hello'}) RETURNING id`;
-	await sql`SELECT * FROM test WHERE id = ${id}`;
+	const [result] = await sql`SELECT * FROM test WHERE id = ${id}`;
+	if (result.value !== 'hello') {
+		throw new Error(`Expected 'hello', got '${result.value}'`);
+	}
 }
 
 const end = process.hrtime.bigint();

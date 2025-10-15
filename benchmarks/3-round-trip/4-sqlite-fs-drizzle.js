@@ -26,11 +26,14 @@ for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 		.returning({ id: testTable.id })
 		.all();
 
-	db
+	const result = db
 		.select()
 		.from(testTable)
 		.where(eq(testTable.id, inserted.id))
 		.get();
+	if (result.value !== 'hello') {
+		throw new Error(`Expected 'hello', got '${result.value}'`);
+	}
 }
 
 const end = process.hrtime.bigint();

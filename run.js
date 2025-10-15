@@ -5,8 +5,7 @@ import { join } from 'path';
 import { runBenchmark } from './lib/bench.js';
 import {
 	formatResultsTable,
-	formatResultsTableWithORM,
-	generateKeyFindings
+	formatResultsTableWithORM
 } from './lib/format.js';
 import { getEnvironmentInfo, formatEnvironmentMarkdown } from './lib/env.js';
 import {
@@ -82,23 +81,16 @@ async function runPhase(phase) {
 
 	const testFiles = getTestFiles(phase.id);
 	const phaseResults = [];
-	const errors = [];
 
 	for (const testFile of testFiles) {
-		try {
-			const result = await runBenchmark(testFile, DEFAULT_ITERATIONS, true);
-			phaseResults.push(result);
+		const result = await runBenchmark(testFile, DEFAULT_ITERATIONS, true);
+		phaseResults.push(result);
 
-			console.log(`  ✓ ${result.driver} (${result.stats.median.toFixed(DECIMAL_PLACES)}ms median)`);
-		} catch (error) {
-			const errorInfo = { testFile, message: error.message };
-			errors.push(errorInfo);
-			console.error(`  ✗ ${testFile} failed:`, error.message);
-		}
+		console.log(`  ✓ ${result.driver} (${result.stats.median.toFixed(DECIMAL_PLACES)}ms median)`);
 	}
 
 	console.log('');
-	return { results: phaseResults, errors };
+	return phaseResults;
 }
 
 /**
@@ -133,7 +125,6 @@ function writeMarkdownOutput(env, allResults) {
 			markdown += formatResultsTable(results, phase.title, phase.description);
 		}
 
-		markdown += generateKeyFindings(results, phase.name);
 		markdown += MARKDOWN_SEPARATOR;
 	}
 
@@ -152,13 +143,11 @@ async function main() {
 
 	const env = getEnvironmentInfo();
 	const allResults = {};
-	const allErrors = [];
 
 	// Run all phases
 	for (const phase of PHASES) {
-		const { results, errors } = await runPhase(phase);
+		const results = await runPhase(phase);
 		allResults[phase.id] = results;
-		allErrors.push(...errors);
 	}
 
 	// Write output files
@@ -172,15 +161,6 @@ async function main() {
 	console.log('✅ Complete! Results written to:');
 	console.log(`   - ${jsonPath}`);
 	console.log(`   - ${mdPath}`);
-
-	// Report errors if any
-	if (allErrors.length > 0) {
-		console.error(`\n⚠️  ${allErrors.length} test(s) failed:`);
-		allErrors.forEach(({ testFile, message }) => {
-			console.error(`   - ${testFile}: ${message}`);
-		});
-		process.exit(1);
-	}
 }
 
 main().catch((error) => {
