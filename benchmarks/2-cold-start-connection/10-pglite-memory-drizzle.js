@@ -6,12 +6,13 @@ const start = process.hrtime.bigint();
 const client = new PGlite();
 const db = drizzle(client);
 await db.execute(sql`SELECT 1`);
-await client.close();
 const end = process.hrtime.bigint();
+
+await client.close();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'pglite-memory-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),

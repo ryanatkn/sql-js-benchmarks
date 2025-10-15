@@ -27,15 +27,15 @@ const PHASES = [
 	{
 		id: '1-import',
 		name: 'import',
-		title: '1. Import Overhead (Cold Start)',
+		title: '1. Import Overhead',
 		description: `${DEFAULT_ITERATIONS} iterations, fresh Node process each time`,
 		withORM: true
 	},
 	{
-		id: '2-minimal-query',
-		name: 'minimal-query',
-		title: '2. Minimal Query (SELECT 1)',
-		description: `${DEFAULT_ITERATIONS} iterations, full operation (cold start: connect + query + close)`,
+		id: '2-cold-start-connection',
+		name: 'cold-start-connection',
+		title: '2. Cold Start Connection',
+		description: `${DEFAULT_ITERATIONS} iterations, fresh connection each time (connect + query)`,
 		withORM: true
 	},
 	{

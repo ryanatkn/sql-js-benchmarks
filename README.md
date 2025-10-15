@@ -7,7 +7,7 @@ See [results/output.md](results/output.md).
 ## What this measures
 
 - import overhead
-- cold start with connect + minimal query (SELECT 1) + close
+- cold start connection (connect + SELECT 1 query)
 - round trip (INSERT + SELECT) - 100 cycles per iteration
 
 ## Benchmarked drivers
@@ -62,9 +62,9 @@ PGPASSWORD=""
 ```
 pg_js_benchmarks/
 ├── benchmarks/
-│   ├── 1-import/           (8 variants - no in-memory variants)
-│   ├── 2-minimal-query/    (12 variants)
-│   └── 3-round-trip/       (12 variants)
+│   ├── 1-import/                  (8 variants - no in-memory variants)
+│   ├── 2-cold-start-connection/   (12 variants)
+│   └── 3-round-trip/              (12 variants)
 ├── lib/
 │   ├── bench.js
 │   ├── format.js

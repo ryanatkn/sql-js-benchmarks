@@ -6,14 +6,15 @@ const dataDir = `./tmp/pglite-bench-${Date.now()}`;
 const start = process.hrtime.bigint();
 const db = new PGlite(dataDir);
 await db.query('SELECT 1');
-await db.close();
 const end = process.hrtime.bigint();
+
+await db.close();
 
 rmSync(dataDir, { recursive: true, force: true });
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'pglite-fs',
 		variant: 'raw',
 		time_ns: Number(end - start),

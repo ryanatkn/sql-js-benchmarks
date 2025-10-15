@@ -9,14 +9,15 @@ const start = process.hrtime.bigint();
 const sqlite = new Database(dbPath);
 const db = drizzle(sqlite);
 db.get(sql`SELECT 1`);
-sqlite.close();
 const end = process.hrtime.bigint();
+
+sqlite.close();
 
 unlinkSync(dbPath);
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'sqlite-fs-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),

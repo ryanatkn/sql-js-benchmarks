@@ -3,12 +3,13 @@ import { PGlite } from '@electric-sql/pglite';
 const start = process.hrtime.bigint();
 const db = new PGlite();
 await db.query('SELECT 1');
-await db.close();
 const end = process.hrtime.bigint();
+
+await db.close();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'pglite-memory',
 		variant: 'raw',
 		time_ns: Number(end - start),

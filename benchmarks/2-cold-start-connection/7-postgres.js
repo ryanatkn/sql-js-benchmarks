@@ -10,12 +10,13 @@ const sql = postgres({
 
 const start = process.hrtime.bigint();
 await sql`SELECT 1`;
-await sql.end();
 const end = process.hrtime.bigint();
+
+await sql.end();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'postgres',
 		variant: 'raw',
 		time_ns: Number(end - start),

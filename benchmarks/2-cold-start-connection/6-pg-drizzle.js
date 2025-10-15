@@ -14,12 +14,13 @@ const start = process.hrtime.bigint();
 await client.connect();
 const db = drizzle(client);
 await db.execute(sql`SELECT 1`);
-await client.end();
 const end = process.hrtime.bigint();
+
+await client.end();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'pg-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),

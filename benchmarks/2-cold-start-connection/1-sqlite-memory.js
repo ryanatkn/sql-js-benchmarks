@@ -3,12 +3,13 @@ import Database from 'better-sqlite3';
 const start = process.hrtime.bigint();
 const db = new Database(':memory:');
 const result = db.prepare('SELECT 1').get();
-db.close();
 const end = process.hrtime.bigint();
+
+db.close();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'sqlite-memory',
 		variant: 'raw',
 		time_ns: Number(end - start),

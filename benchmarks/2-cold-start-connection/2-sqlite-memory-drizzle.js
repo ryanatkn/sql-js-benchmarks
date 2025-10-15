@@ -6,12 +6,13 @@ const start = process.hrtime.bigint();
 const sqlite = new Database(':memory:');
 const db = drizzle(sqlite);
 db.get(sql`SELECT 1`);
-sqlite.close();
 const end = process.hrtime.bigint();
+
+sqlite.close();
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'sqlite-memory-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),

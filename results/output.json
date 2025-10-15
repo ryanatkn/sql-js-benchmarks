@@ -1,6 +1,6 @@
 {
   "environment": {
-    "timestamp": "2025-10-15T11:45:03.497Z",
+    "timestamp": "2025-10-15T15:34:55.894Z",
     "node": "v24.9.0",
     "postgresql": "17.5"
   },
@@ -11,14 +11,14 @@
         "phase": "import",
         "driver": "sqlite",
         "variant": "raw",
-        "time_ns": 5530389,
-        "time_ms": 5.530389,
+        "time_ns": 5884112,
+        "time_ms": 5.884112,
         "fileNumber": 1,
         "stats": {
-          "median": 5.561372,
-          "min": 5.478152,
-          "cv": 2.399136430548008,
-          "p90": 5.861609
+          "median": 5.55963,
+          "min": 5.495305,
+          "cv": 2.304141467959173,
+          "p90": 5.83437
         },
         "iterations": 30
       },
@@ -26,14 +26,14 @@
         "phase": "import",
         "driver": "sqlite-drizzle",
         "variant": "orm",
-        "time_ns": 258948639,
-        "time_ms": 258.948639,
+        "time_ns": 257346083,
+        "time_ms": 257.346083,
         "fileNumber": 2,
         "stats": {
-          "median": 258.8850245,
-          "min": 255.573779,
-          "cv": 0.742644676844483,
-          "p90": 261.849996
+          "median": 255.24312600000002,
+          "min": 224.137467,
+          "cv": 2.4925256266527125,
+          "p90": 258.875138
         },
         "iterations": 30
       },
@@ -41,14 +41,14 @@
         "phase": "import",
         "driver": "pg",
         "variant": "raw",
-        "time_ns": 16369243,
-        "time_ms": 16.369243,
+        "time_ns": 17656384,
+        "time_ms": 17.656384,
         "fileNumber": 3,
         "stats": {
-          "median": 15.9700705,
-          "min": 15.794966,
-          "cv": 4.720048027916913,
-          "p90": 16.675928
+          "median": 15.989557000000001,
+          "min": 15.845102,
+          "cv": 7.1169367886536925,
+          "p90": 19.163308
         },
         "iterations": 30
       },
@@ -56,14 +56,14 @@
         "phase": "import",
         "driver": "pg-drizzle",
         "variant": "orm",
-        "time_ns": 285545729,
-        "time_ms": 285.545729,
+        "time_ns": 276208603,
+        "time_ms": 276.208603,
         "fileNumber": 4,
         "stats": {
-          "median": 280.836458,
-          "min": 277.846868,
-          "cv": 0.7510726016165367,
-          "p90": 284.57285
+          "median": 279.818875,
+          "min": 270.30492,
+          "cv": 1.183964034030492,
+          "p90": 285.116008
         },
         "iterations": 30
       },
@@ -71,14 +71,14 @@
         "phase": "import",
         "driver": "postgres",
         "variant": "raw",
-        "time_ns": 12977290,
-        "time_ms": 12.97729,
+        "time_ns": 12863515,
+        "time_ms": 12.863515,
         "fileNumber": 5,
         "stats": {
-          "median": 12.8565145,
-          "min": 12.722833,
-          "cv": 6.753109104582242,
-          "p90": 13.369034
+          "median": 12.8151795,
+          "min": 12.613248,
+          "cv": 2.5646731437838,
+          "p90": 13.464823
         },
         "iterations": 30
       },
@@ -86,14 +86,14 @@
         "phase": "import",
         "driver": "postgres-drizzle",
         "variant": "orm",
-        "time_ns": 274514104,
-        "time_ms": 274.514104,
+        "time_ns": 275771910,
+        "time_ms": 275.77191,
         "fileNumber": 6,
         "stats": {
-          "median": 274.27639250000004,
-          "min": 271.769894,
-          "cv": 0.8591486670457428,
-          "p90": 279.55125
+          "median": 274.556739,
+          "min": 271.237576,
+          "cv": 0.8781370004884822,
+          "p90": 277.631272
         },
         "iterations": 30
       },
@@ -101,14 +101,14 @@
         "phase": "import",
         "driver": "pglite",
         "variant": "raw",
-        "time_ns": 12501851,
-        "time_ms": 12.501851,
+        "time_ns": 11795085,
+        "time_ms": 11.795085,
         "fileNumber": 7,
         "stats": {
-          "median": 11.952361,
-          "min": 11.694838,
-          "cv": 1.5685460292070372,
-          "p90": 12.212199
+          "median": 11.916732,
+          "min": 11.724953,
+          "cv": 2.1465224300595405,
+          "p90": 12.60475
         },
         "iterations": 30
       },
@@ -116,196 +116,196 @@
         "phase": "import",
         "driver": "pglite-drizzle",
         "variant": "orm",
-        "time_ns": 273771048,
-        "time_ms": 273.771048,
+        "time_ns": 271100947,
+        "time_ms": 271.100947,
         "fileNumber": 8,
         "stats": {
-          "median": 274.4529735,
-          "min": 270.182099,
-          "cv": 0.8863652403404152,
-          "p90": 278.455724
+          "median": 271.00966600000004,
+          "min": 238.970624,
+          "cv": 3.3415898421963055,
+          "p90": 275.674279
         },
         "iterations": 30
       }
     ],
-    "2-minimal-query": [
+    "2-cold-start-connection": [
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "sqlite-memory",
         "variant": "raw",
-        "time_ns": 1683123,
-        "time_ms": 1.683123,
+        "time_ns": 1634682,
+        "time_ms": 1.634682,
         "fileNumber": 1,
         "stats": {
-          "median": 1.5976180000000002,
-          "min": 1.564802,
-          "cv": 3.9552507135114547,
-          "p90": 1.683123
+          "median": 1.589928,
+          "min": 1.545776,
+          "cv": 2.10880673449689,
+          "p90": 1.634682
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pglite-memory-drizzle",
         "variant": "orm",
-        "time_ns": 702350922,
-        "time_ms": 702.350922,
+        "time_ns": 696431223,
+        "time_ms": 696.431223,
         "fileNumber": 10,
         "stats": {
-          "median": 702.9513905,
-          "min": 639.710367,
-          "cv": 3.925428413135259,
-          "p90": 718.386404
+          "median": 697.0077464999999,
+          "min": 632.774678,
+          "cv": 4.392939547646304,
+          "p90": 709.832409
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pglite-fs",
         "variant": "raw",
-        "time_ns": 923642404,
-        "time_ms": 923.642404,
+        "time_ns": 880257704,
+        "time_ms": 880.257704,
         "fileNumber": 11,
         "stats": {
-          "median": 914.61379,
-          "min": 828.636465,
-          "cv": 3.0996622906884026,
-          "p90": 930.014639
+          "median": 920.0556535000001,
+          "min": 835.542283,
+          "cv": 3.399132690401072,
+          "p90": 944.589057
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pglite-fs-drizzle",
         "variant": "orm",
-        "time_ns": 841369665,
-        "time_ms": 841.369665,
+        "time_ns": 893554427,
+        "time_ms": 893.554427,
         "fileNumber": 12,
         "stats": {
-          "median": 920.0549025,
-          "min": 835.382763,
-          "cv": 4.05465969664494,
-          "p90": 938.607841
+          "median": 919.60818,
+          "min": 824.501399,
+          "cv": 3.703107502642468,
+          "p90": 938.588896
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "sqlite-memory-drizzle",
         "variant": "orm",
-        "time_ns": 2818772,
-        "time_ms": 2.818772,
+        "time_ns": 2518316,
+        "time_ms": 2.518316,
         "fileNumber": 2,
         "stats": {
-          "median": 2.7968665,
-          "min": 2.746518,
-          "cv": 2.1091111280406354,
-          "p90": 2.858196
+          "median": 2.776154,
+          "min": 2.452474,
+          "cv": 20.85687515922872,
+          "p90": 2.823748
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "sqlite-fs",
         "variant": "raw",
-        "time_ns": 1719733,
-        "time_ms": 1.719733,
+        "time_ns": 1760937,
+        "time_ms": 1.760937,
         "fileNumber": 3,
         "stats": {
-          "median": 1.6720730000000001,
-          "min": 1.641265,
-          "cv": 1.5316679459490612,
-          "p90": 1.719733
+          "median": 1.6680234999999999,
+          "min": 1.615586,
+          "cv": 3.1724654188885775,
+          "p90": 1.760937
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "sqlite-fs-drizzle",
         "variant": "orm",
-        "time_ns": 2691373,
-        "time_ms": 2.691373,
+        "time_ns": 2650456,
+        "time_ms": 2.650456,
         "fileNumber": 4,
         "stats": {
-          "median": 2.6631205,
-          "min": 2.599462,
-          "cv": 1.240219860153627,
-          "p90": 2.737801
+          "median": 2.647433,
+          "min": 2.612317,
+          "cv": 0.8239084174251088,
+          "p90": 2.685454
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pg",
         "variant": "raw",
-        "time_ns": 10233338,
-        "time_ms": 10.233338,
+        "time_ns": 15710392,
+        "time_ms": 15.710392,
         "fileNumber": 5,
         "stats": {
-          "median": 10.5405935,
-          "min": 10.111799,
-          "cv": 1.7175484420250697,
-          "p90": 10.711343
+          "median": 8.610504500000001,
+          "min": 8.343752,
+          "cv": 14.580148901980227,
+          "p90": 8.813094
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pg-drizzle",
         "variant": "orm",
-        "time_ns": 14741858,
-        "time_ms": 14.741858,
+        "time_ns": 11859957,
+        "time_ms": 11.859957,
         "fileNumber": 6,
         "stats": {
-          "median": 14.1470775,
-          "min": 12.664894,
-          "cv": 5.833785303652643,
-          "p90": 15.041178
+          "median": 11.849776,
+          "min": 10.676113,
+          "cv": 4.9961561253461415,
+          "p90": 12.288289
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "postgres",
         "variant": "raw",
-        "time_ns": 15277150,
-        "time_ms": 15.27715,
+        "time_ns": 26389485,
+        "time_ms": 26.389485,
         "fileNumber": 7,
         "stats": {
-          "median": 15.797080999999999,
-          "min": 14.269031,
-          "cv": 3.5408324923749097,
-          "p90": 16.730064
+          "median": 13.124680999999999,
+          "min": 12.040193,
+          "cv": 18.28532073551483,
+          "p90": 13.962754
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "postgres-drizzle",
         "variant": "orm",
-        "time_ns": 15993894,
-        "time_ms": 15.993894,
+        "time_ns": 13503963,
+        "time_ms": 13.503963,
         "fileNumber": 8,
         "stats": {
-          "median": 17.002724,
-          "min": 14.93017,
-          "cv": 7.487069223002314,
-          "p90": 19.096178
+          "median": 14.067129000000001,
+          "min": 12.703547,
+          "cv": 8.75922371358434,
+          "p90": 16.507531
         },
         "iterations": 30
       },
       {
-        "phase": "minimal-query",
+        "phase": "cold-start-connection",
         "driver": "pglite-memory",
         "variant": "raw",
-        "time_ns": 709791790,
-        "time_ms": 709.79179,
+        "time_ns": 717857242,
+        "time_ms": 717.857242,
         "fileNumber": 9,
         "stats": {
-          "median": 710.6820295,
-          "min": 649.714095,
-          "cv": 3.593319403815177,
-          "p90": 741.719563
+          "median": 708.9283795,
+          "min": 641.411042,
+          "cv": 3.006839682255167,
+          "p90": 721.76062
         },
         "iterations": 30
       }
@@ -315,14 +315,14 @@
         "phase": "round-trip",
         "driver": "sqlite-memory",
         "variant": "raw",
-        "time_ns": 294943,
-        "time_ms": 0.294943,
+        "time_ns": 295575,
+        "time_ms": 0.295575,
         "fileNumber": 1,
         "stats": {
-          "median": 0.29638549999999997,
-          "min": 0.289653,
-          "cv": 1.1836306425208183,
-          "p90": 0.300654
+          "median": 0.294438,
+          "min": 0.291217,
+          "cv": 5.965924609256551,
+          "p90": 0.314751
         },
         "iterations": 30
       },
@@ -330,14 +330,14 @@
         "phase": "round-trip",
         "driver": "pglite-memory-drizzle",
         "variant": "orm",
-        "time_ns": 98185274,
-        "time_ms": 98.185274,
+        "time_ns": 96801719,
+        "time_ms": 96.801719,
         "fileNumber": 10,
         "stats": {
-          "median": 95.8625965,
-          "min": 81.063285,
-          "cv": 7.0822917504449325,
-          "p90": 98.244581
+          "median": 95.897816,
+          "min": 83.636489,
+          "cv": 7.137610398664708,
+          "p90": 100.401593
         },
         "iterations": 30
       },
@@ -345,14 +345,14 @@
         "phase": "round-trip",
         "driver": "pglite-fs",
         "variant": "raw",
-        "time_ns": 79180425,
-        "time_ms": 79.180425,
+        "time_ns": 69041460,
+        "time_ms": 69.04146,
         "fileNumber": 11,
         "stats": {
-          "median": 79.218879,
-          "min": 69.715419,
-          "cv": 4.628961991756922,
-          "p90": 84.455364
+          "median": 78.0316095,
+          "min": 67.619135,
+          "cv": 6.234792341161467,
+          "p90": 79.233259
         },
         "iterations": 30
       },
@@ -360,14 +360,14 @@
         "phase": "round-trip",
         "driver": "pglite-fs-drizzle",
         "variant": "orm",
-        "time_ns": 93482626,
-        "time_ms": 93.482626,
+        "time_ns": 92856412,
+        "time_ms": 92.856412,
         "fileNumber": 12,
         "stats": {
-          "median": 89.830435,
-          "min": 78.993164,
-          "cv": 5.828235339324799,
-          "p90": 93.486375
+          "median": 89.994573,
+          "min": 79.094111,
+          "cv": 5.03500125351579,
+          "p90": 92.778464
         },
         "iterations": 30
       },
@@ -375,14 +375,14 @@
         "phase": "round-trip",
         "driver": "sqlite-memory-drizzle",
         "variant": "orm",
-        "time_ns": 14153503,
-        "time_ms": 14.153503,
+        "time_ns": 14563251,
+        "time_ms": 14.563251,
         "fileNumber": 2,
         "stats": {
-          "median": 15.9226505,
-          "min": 13.948418,
-          "cv": 6.6268062370746765,
-          "p90": 17.529552
+          "median": 15.8616405,
+          "min": 14.11435,
+          "cv": 3.3751558174097007,
+          "p90": 16.550488
         },
         "iterations": 30
       },
@@ -390,14 +390,14 @@
         "phase": "round-trip",
         "driver": "sqlite-fs",
         "variant": "raw",
-        "time_ns": 638825044,
-        "time_ms": 638.825044,
+        "time_ns": 845240502,
+        "time_ms": 845.240502,
         "fileNumber": 3,
         "stats": {
-          "median": 715.867528,
-          "min": 638.825044,
-          "cv": 15.459302865023409,
-          "p90": 1020.732373
+          "median": 735.4849015,
+          "min": 696.858616,
+          "cv": 18.07243043379703,
+          "p90": 1075.243045
         },
         "iterations": 30
       },
@@ -405,14 +405,14 @@
         "phase": "round-trip",
         "driver": "sqlite-fs-drizzle",
         "variant": "orm",
-        "time_ns": 796573844,
-        "time_ms": 796.573844,
+        "time_ns": 747372745,
+        "time_ms": 747.372745,
         "fileNumber": 4,
         "stats": {
-          "median": 718.232706,
-          "min": 672.957235,
-          "cv": 21.569102034754238,
-          "p90": 1149.21539
+          "median": 741.2041455,
+          "min": 689.874726,
+          "cv": 18.416182257699514,
+          "p90": 1159.756209
         },
         "iterations": 30
       },
@@ -420,14 +420,14 @@
         "phase": "round-trip",
         "driver": "pg",
         "variant": "raw",
-        "time_ns": 417247362,
-        "time_ms": 417.247362,
+        "time_ns": 207035362,
+        "time_ms": 207.035362,
         "fileNumber": 5,
         "stats": {
-          "median": 159.73587400000002,
-          "min": 153.159209,
-          "cv": 27.27656541496865,
-          "p90": 180.825489
+          "median": 162.681465,
+          "min": 153.699171,
+          "cv": 9.336912069456735,
+          "p90": 206.399929
         },
         "iterations": 30
       },
@@ -435,14 +435,14 @@
         "phase": "round-trip",
         "driver": "pg-drizzle",
         "variant": "orm",
-        "time_ns": 243207243,
-        "time_ms": 243.207243,
+        "time_ns": 175350600,
+        "time_ms": 175.3506,
         "fileNumber": 6,
         "stats": {
-          "median": 175.9621435,
-          "min": 165.614978,
-          "cv": 24.50282829545907,
-          "p90": 243.207243
+          "median": 175.578238,
+          "min": 166.785025,
+          "cv": 23.22090967529145,
+          "p90": 238.784433
         },
         "iterations": 30
       },
@@ -450,14 +450,14 @@
         "phase": "round-trip",
         "driver": "postgres",
         "variant": "raw",
-        "time_ns": 155045924,
-        "time_ms": 155.045924,
+        "time_ns": 166304144,
+        "time_ms": 166.304144,
         "fileNumber": 7,
         "stats": {
-          "median": 157.67089800000002,
-          "min": 151.453799,
-          "cv": 24.70570820637098,
-          "p90": 233.045855
+          "median": 158.27044999999998,
+          "min": 148.935389,
+          "cv": 25.852074050073913,
+          "p90": 194.246921
         },
         "iterations": 30
       },
@@ -465,14 +465,14 @@
         "phase": "round-trip",
         "driver": "postgres-drizzle",
         "variant": "orm",
-        "time_ns": 189588825,
-        "time_ms": 189.588825,
+        "time_ns": 193618273,
+        "time_ms": 193.618273,
         "fileNumber": 8,
         "stats": {
-          "median": 190.72094850000002,
-          "min": 183.381699,
-          "cv": 19.191211958411145,
-          "p90": 242.528286
+          "median": 190.261342,
+          "min": 181.597822,
+          "cv": 21.437354794585907,
+          "p90": 261.453188
         },
         "iterations": 30
       },
@@ -480,14 +480,14 @@
         "phase": "round-trip",
         "driver": "pglite-memory",
         "variant": "raw",
-        "time_ns": 71483303,
-        "time_ms": 71.483303,
+        "time_ns": 71585263,
+        "time_ms": 71.585263,
         "fileNumber": 9,
         "stats": {
-          "median": 71.451464,
-          "min": 62.624646,
-          "cv": 5.850301860540482,
-          "p90": 72.865996
+          "median": 71.3749235,
+          "min": 62.577221,
+          "cv": 6.262211311599243,
+          "p90": 72.937807
         },
         "iterations": 30
       }

@@ -9,14 +9,15 @@ const start = process.hrtime.bigint();
 const client = new PGlite(dataDir);
 const db = drizzle(client);
 await db.execute(sql`SELECT 1`);
-await client.close();
 const end = process.hrtime.bigint();
+
+await client.close();
 
 rmSync(dataDir, { recursive: true, force: true });
 
 console.log(
 	JSON.stringify({
-		phase: 'minimal-query',
+		phase: 'cold-start-connection',
 		driver: 'pglite-fs-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
