@@ -7,7 +7,7 @@ const client = new pg.Client({
 	port: process.env.PGPORT || 5432,
 	database: process.env.PGDATABASE || 'postgres',
 	user: process.env.PGUSER || 'postgres',
-	password: process.env.PGPASSWORD || ''
+	password: process.env.PGPASSWORD || '',
 });
 
 const start = process.hrtime.bigint();
@@ -24,6 +24,6 @@ console.log(
 		driver: 'pg-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

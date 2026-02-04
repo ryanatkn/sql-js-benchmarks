@@ -1,7 +1,6 @@
 import { PGlite } from '@electric-sql/pglite';
-import { rmSync } from 'fs';
 
-const dataDir = `./tmp/pglite-bench-${Date.now()}`;
+const dataDir = './tmp/pglite-existing';
 
 const start = process.hrtime.bigint();
 const db = new PGlite(dataDir);
@@ -10,11 +9,9 @@ const end = process.hrtime.bigint();
 
 await db.close();
 
-rmSync(dataDir, { recursive: true, force: true });
-
 console.log(
 	JSON.stringify({
-		phase: 'cold-start-connection',
+		phase: 'cold-start-reopen',
 		driver: 'pglite-fs',
 		variant: 'raw',
 		time_ns: Number(end - start),

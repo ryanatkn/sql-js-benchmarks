@@ -6,7 +6,7 @@ const client = new pg.Client({
 	port: process.env.PGPORT || 5432,
 	database: process.env.PGDATABASE || 'postgres',
 	user: process.env.PGUSER || 'postgres',
-	password: process.env.PGPASSWORD || ''
+	password: process.env.PGPASSWORD || '',
 });
 
 await client.connect();
@@ -19,12 +19,12 @@ for (let i = 0; i < BENCHMARK_3_ROUND_TRIP_ITERATIONS; i++) {
 	const { rows } = await client.query({
 		name: 'insert-test',
 		text: 'INSERT INTO test (value) VALUES ($1) RETURNING id',
-		values: ['hello']
+		values: ['hello'],
 	});
 	const result = await client.query({
 		name: 'select-test',
 		text: 'SELECT * FROM test WHERE id = $1',
-		values: [rows[0].id]
+		values: [rows[0].id],
 	});
 	if (result.rows[0].value !== 'hello') {
 		throw new Error(`Expected 'hello', got '${result.rows[0].value}'`);
@@ -42,6 +42,6 @@ console.log(
 		driver: 'pg',
 		variant: 'raw',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

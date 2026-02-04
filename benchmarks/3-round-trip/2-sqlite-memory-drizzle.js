@@ -1,18 +1,20 @@
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import Database from 'better-sqlite3';
-import { sql, eq } from 'drizzle-orm';
-import { integer, text, sqliteTable } from 'drizzle-orm/sqlite-core';
+import { eq, sql } from 'drizzle-orm';
+import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 import { BENCHMARK_3_ROUND_TRIP_ITERATIONS } from '../../lib/constants.js';
 
 const testTable = sqliteTable('test', {
 	id: integer('id').primaryKey({ autoIncrement: true }),
-	value: text('value')
+	value: text('value'),
 });
 
 const sqlite = new Database(':memory:');
 const db = drizzle(sqlite);
 
-db.run(sql`CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, value TEXT)`);
+db.run(
+	sql`CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, value TEXT)`,
+);
 
 const start = process.hrtime.bigint();
 
@@ -44,6 +46,6 @@ console.log(
 		driver: 'sqlite-memory-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

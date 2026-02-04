@@ -1,24 +1,22 @@
 #!/usr/bin/env node
 
-import { readdirSync, rmSync, mkdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { execSync } from 'child_process';
 import { runBenchmark } from './lib/bench.js';
+import { formatResultsTable, formatResultsTableWithORM } from './lib/format.js';
+import { formatEnvironmentMarkdown, getEnvironmentInfo } from './lib/env.js';
 import {
-	formatResultsTable,
-	formatResultsTableWithORM
-} from './lib/format.js';
-import { getEnvironmentInfo, formatEnvironmentMarkdown } from './lib/env.js';
-import {
-	DEFAULT_ITERATIONS,
 	BENCHMARK_3_ROUND_TRIP_ITERATIONS,
+	BENCHMARK_TITLE,
 	BENCHMARKS_DIR,
-	RESULTS_DIR,
+	DECIMAL_PLACES,
+	DEFAULT_ITERATIONS,
+	MARKDOWN_SEPARATOR,
 	OUTPUT_JSON_FILE,
 	OUTPUT_MD_FILE,
+	RESULTS_DIR,
 	TEST_FILE_EXTENSION,
-	BENCHMARK_TITLE,
-	MARKDOWN_SEPARATOR,
-	DECIMAL_PLACES
 } from './lib/constants.js';
 
 // Benchmark phases configuration
@@ -28,22 +26,30 @@ const PHASES = [
 		name: 'import',
 		title: '1. Import Overhead',
 		description: `${DEFAULT_ITERATIONS} iterations, fresh Node process each time`,
-		withORM: true
+		withOrm: true,
 	},
 	{
 		id: '2-cold-start-connection',
 		name: 'cold-start-connection',
-		title: '2. Cold Start Connection',
-		description: `${DEFAULT_ITERATIONS} iterations, fresh connection each time (connect + query)`,
-		withORM: true
+		title: '2. Cold Start Connection (New Database)',
+		description: `${DEFAULT_ITERATIONS} iterations, creates new database each time`,
+		withOrm: true,
+	},
+	{
+		id: '2b-cold-start-reopen',
+		name: 'cold-start-reopen',
+		title: '2b. Cold Start Connection (Reopen Existing)',
+		description: `${DEFAULT_ITERATIONS} iterations, reopens existing database each time`,
+		withOrm: true,
 	},
 	{
 		id: '3-round-trip',
 		name: 'round-trip',
 		title: '3. Round Trip (INSERT + SELECT)',
-		description: `${DEFAULT_ITERATIONS} iterations, ${BENCHMARK_3_ROUND_TRIP_ITERATIONS} cycles of INSERT RETURNING + SELECT per iteration`,
-		withORM: true
-	}
+		description:
+			`${DEFAULT_ITERATIONS} iterations, ${BENCHMARK_3_ROUND_TRIP_ITERATIONS} cycles of INSERT RETURNING + SELECT per iteration`,
+		withOrm: true,
+	},
 ];
 
 /**
@@ -63,14 +69,26 @@ function ensureTmpDirectory() {
 }
 
 /**
- * Get all test files for a phase
+ * Get all test files for a phase (excludes setup.js and cleanup.js)
  */
 function getTestFiles(phaseId) {
 	const benchmarkDir = join(BENCHMARKS_DIR, phaseId);
 	return readdirSync(benchmarkDir)
-		.filter((f) => f.endsWith(TEST_FILE_EXTENSION))
+		.filter((f) => f.endsWith(TEST_FILE_EXTENSION) && f !== 'setup.js' && f !== 'cleanup.js')
 		.sort()
 		.map((f) => join(benchmarkDir, f));
+}
+
+/**
+ * Run a setup or cleanup script if it exists
+ */
+function runPhaseScript(phaseId, scriptName) {
+	const scriptPath = join(BENCHMARKS_DIR, phaseId, scriptName);
+	if (existsSync(scriptPath)) {
+		execSync(`node ${scriptPath}`, { stdio: 'inherit' });
+		return true;
+	}
+	return false;
 }
 
 /**
@@ -79,6 +97,9 @@ function getTestFiles(phaseId) {
 async function runPhase(phase) {
 	console.log(`[${phase.id}] ${phase.title}`);
 
+	// Run setup script if present
+	runPhaseScript(phase.id, 'setup.js');
+
 	const testFiles = getTestFiles(phase.id);
 	const phaseResults = [];
 
@@ -86,8 +107,13 @@ async function runPhase(phase) {
 		const result = await runBenchmark(testFile, DEFAULT_ITERATIONS, true);
 		phaseResults.push(result);
 
-		console.log(`  ✓ ${result.driver} (${result.stats.median.toFixed(DECIMAL_PLACES)}ms median)`);
+		console.log(
+			`  ✓ ${result.driver} (${result.stats.median.toFixed(DECIMAL_PLACES)}ms median)`,
+		);
 	}
+
+	// Run cleanup script if present
+	runPhaseScript(phase.id, 'cleanup.js');
 
 	console.log('');
 	return phaseResults;
@@ -100,7 +126,7 @@ function writeJsonOutput(env, allResults) {
 	const jsonOutput = {
 		environment: env,
 		iterations: DEFAULT_ITERATIONS,
-		results: allResults
+		results: allResults,
 	};
 
 	const outputPath = join(RESULTS_DIR, OUTPUT_JSON_FILE);
@@ -119,8 +145,12 @@ function writeMarkdownOutput(env, allResults) {
 		const results = allResults[phase.id];
 		if (!results || results.length === 0) continue;
 
-		if (phase.withORM) {
-			markdown += formatResultsTableWithORM(results, phase.title, phase.description);
+		if (phase.withOrm) {
+			markdown += formatResultsTableWithORM(
+				results,
+				phase.title,
+				phase.description,
+			);
 		} else {
 			markdown += formatResultsTable(results, phase.title, phase.description);
 		}

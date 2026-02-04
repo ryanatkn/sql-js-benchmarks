@@ -1,9 +1,8 @@
 import { drizzle } from 'drizzle-orm/pglite';
 import { PGlite } from '@electric-sql/pglite';
 import { sql } from 'drizzle-orm';
-import { rmSync } from 'fs';
 
-const dataDir = `./tmp/pglite-bench-${Date.now()}`;
+const dataDir = './tmp/pglite-existing';
 
 const start = process.hrtime.bigint();
 const client = new PGlite(dataDir);
@@ -13,11 +12,9 @@ const end = process.hrtime.bigint();
 
 await client.close();
 
-rmSync(dataDir, { recursive: true, force: true });
-
 console.log(
 	JSON.stringify({
-		phase: 'cold-start-connection',
+		phase: 'cold-start-reopen',
 		driver: 'pglite-fs-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),

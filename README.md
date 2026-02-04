@@ -14,18 +14,22 @@ See [results/output.md](results/output.md).
 ## Benchmarked drivers
 
 **PostgreSQL (network):**
+
 - `pg`
 - `postgres`
 
 **PGlite (WASM, in-memory and filesystem):**
+
 - `pglite-memory`
 - `pglite-fs`
 
 **SQLite (in-memory and filesystem):**
+
 - `sqlite-memory` (`better-sqlite3`)
 - `sqlite-fs` (`better-sqlite3`)
 
 **ORMs:**
+
 - Drizzle ORM variants for all drivers above
 
 ## Prerequisites

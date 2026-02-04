@@ -1,23 +1,23 @@
 {
-  "name": "sql-js-benchmarks",
-  "version": "1.0.0",
-  "description": "PostgreSQL and sqlite benchmarks for Node",
-  "license": "Unlicense",
-  "repository": "https://github.com/ryanatkn/js_sql_benchmarks",
-  "author": {
-    "name": "Ryan Atkinson",
-    "email": "mail@ryanatkn.com",
-    "url": "https://www.ryanatkn.com/"
-  },
-  "type": "module",
-  "scripts": {
-    "start": "node run.js"
-  },
-  "dependencies": {
-    "@electric-sql/pglite": "0.3.11",
-    "better-sqlite3": "12.4.1",
-    "drizzle-orm": "0.44.6",
-    "pg": "8.16.3",
-    "postgres": "3.4.7"
-  }
+	"name": "sql-js-benchmarks",
+	"version": "1.0.0",
+	"description": "PostgreSQL and sqlite benchmarks for Node",
+	"license": "Unlicense",
+	"repository": "https://github.com/ryanatkn/js_sql_benchmarks",
+	"author": {
+		"name": "Ryan Atkinson",
+		"email": "mail@ryanatkn.com",
+		"url": "https://www.ryanatkn.com/"
+	},
+	"type": "module",
+	"scripts": {
+		"start": "node run.js"
+	},
+	"dependencies": {
+		"@electric-sql/pglite": "0.3.11",
+		"better-sqlite3": "12.4.1",
+		"drizzle-orm": "0.44.6",
+		"pg": "8.16.3",
+		"postgres": "3.4.7"
+	}
 }

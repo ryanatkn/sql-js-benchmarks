@@ -1,12 +1,12 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { sql, eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { pgTable, serial, text } from 'drizzle-orm/pg-core';
 import { BENCHMARK_3_ROUND_TRIP_ITERATIONS } from '../../lib/constants.js';
 
 const testTable = pgTable('test', {
 	id: serial('id').primaryKey(),
-	value: text('value')
+	value: text('value'),
 });
 
 const client = postgres({
@@ -14,7 +14,7 @@ const client = postgres({
 	port: process.env.PGPORT || 5432,
 	database: process.env.PGDATABASE || 'postgres',
 	user: process.env.PGUSER || 'postgres',
-	password: process.env.PGPASSWORD || ''
+	password: process.env.PGPASSWORD || '',
 });
 
 const db = drizzle(client);
@@ -49,6 +49,6 @@ console.log(
 		driver: 'postgres-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

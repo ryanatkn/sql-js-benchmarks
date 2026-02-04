@@ -34,6 +34,6 @@ console.log(
 		driver: 'sqlite-fs',
 		variant: 'raw',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

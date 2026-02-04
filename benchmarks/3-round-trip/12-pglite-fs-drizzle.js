@@ -1,13 +1,13 @@
 import { drizzle } from 'drizzle-orm/pglite';
 import { PGlite } from '@electric-sql/pglite';
-import { sql, eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { pgTable, serial, text } from 'drizzle-orm/pg-core';
 import { rmSync } from 'fs';
 import { BENCHMARK_3_ROUND_TRIP_ITERATIONS } from '../../lib/constants.js';
 
 const testTable = pgTable('test', {
 	id: serial('id').primaryKey(),
-	value: text('value')
+	value: text('value'),
 });
 
 const dataDir = `./tmp/pglite-bench-${Date.now()}`;
@@ -47,6 +47,6 @@ console.log(
 		driver: 'pglite-fs-drizzle',
 		variant: 'orm',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

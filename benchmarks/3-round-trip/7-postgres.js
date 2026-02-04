@@ -6,7 +6,7 @@ const sql = postgres({
 	port: process.env.PGPORT || 5432,
 	database: process.env.PGDATABASE || 'postgres',
 	user: process.env.PGUSER || 'postgres',
-	password: process.env.PGPASSWORD || ''
+	password: process.env.PGPASSWORD || '',
 });
 
 await sql`CREATE TABLE test (id SERIAL PRIMARY KEY, value TEXT)`;
@@ -32,6 +32,6 @@ console.log(
 		driver: 'postgres',
 		variant: 'raw',
 		time_ns: Number(end - start),
-		time_ms: Number(end - start) / 1_000_000
-	})
+		time_ms: Number(end - start) / 1_000_000,
+	}),
 );

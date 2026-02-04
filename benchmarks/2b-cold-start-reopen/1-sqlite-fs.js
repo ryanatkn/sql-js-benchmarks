@@ -1,7 +1,6 @@
 import Database from 'better-sqlite3';
-import { unlinkSync } from 'fs';
 
-const dbPath = `./tmp/sqlite-bench-${Date.now()}.db`;
+const dbPath = './tmp/sqlite-existing.db';
 
 const start = process.hrtime.bigint();
 const db = new Database(dbPath);
@@ -10,11 +9,9 @@ const end = process.hrtime.bigint();
 
 db.close();
 
-unlinkSync(dbPath);
-
 console.log(
 	JSON.stringify({
-		phase: 'cold-start-connection',
+		phase: 'cold-start-reopen',
 		driver: 'sqlite-fs',
 		variant: 'raw',
 		time_ns: Number(end - start),
